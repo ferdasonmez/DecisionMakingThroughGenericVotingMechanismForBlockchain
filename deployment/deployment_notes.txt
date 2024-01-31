@@ -1,1 +1,5 @@
-deploym
+Solana DEVNET Deployment
+command: solana program deploy ./DecisionManagementImplWithGenericVoting.so
+
+Program Id: Bimpci5QNLrnLqNpu9qm9C2t7YLuBCXLAaBcw3vanfay
+Deployment Cost: 5.56419288 SOL + fee (0.001995 SOL)
