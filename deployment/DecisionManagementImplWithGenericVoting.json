@@ -1,0 +1,1108 @@
+{
+  "version": "0.0.1",
+  "name": "DecisionManagementImplWithGenericVoting",
+  "instructions": [
+    {
+      "name": "votingTypeVotingStructure",
+      "accounts": [
+        {
+          "name": "dataAccount",
+          "isMut": false,
+          "isSigner": false,
+          "isOptional": false
+        }
+      ],
+      "args": [
+        {
+          "name": "arg0",
+          "type": "u256"
+        }
+      ],
+      "returns": {
+        "defined": "votingTypeVotingStructure_returns"
+      }
+    },
+    {
+      "name": "votingStructureIdVotingStructure",
+      "accounts": [
+        {
+          "name": "dataAccount",
+          "isMut": false,
+          "isSigner": false,
+          "isOptional": false
+        }
+      ],
+      "args": [
+        {
+          "name": "arg0",
+          "type": "u256"
+        }
+      ],
+      "returns": {
+        "defined": "votingStructureIdVotingStructure_returns"
+      }
+    },
+    {
+      "name": "chainNames",
+      "accounts": [
+        {
+          "name": "dataAccount",
+          "isMut": false,
+          "isSigner": false,
+          "isOptional": false
+        }
+      ],
+      "args": [
+        {
+          "name": "arg0",
+          "type": "u256"
+        }
+      ],
+      "returns": "string"
+    },
+    {
+      "name": "bridgeImplementations",
+      "accounts": [
+        {
+          "name": "dataAccount",
+          "isMut": false,
+          "isSigner": false,
+          "isOptional": false
+        }
+      ],
+      "args": [
+        {
+          "name": "arg0",
+          "type": {
+            "array": [
+              "u8",
+              32
+            ]
+          }
+        }
+      ],
+      "returns": "publicKey"
+    },
+    {
+      "name": "chainEnumToIds",
+      "accounts": [
+        {
+          "name": "dataAccount",
+          "isMut": false,
+          "isSigner": false,
+          "isOptional": false
+        }
+      ],
+      "args": [
+        {
+          "name": "arg0",
+          "type": {
+            "defined": "chainNamesEnum"
+          }
+        }
+      ],
+      "returns": "u256"
+    },
+    {
+      "name": "chainEnumToChainName",
+      "accounts": [
+        {
+          "name": "dataAccount",
+          "isMut": false,
+          "isSigner": false,
+          "isOptional": false
+        }
+      ],
+      "args": [
+        {
+          "name": "arg0",
+          "type": {
+            "defined": "chainNamesEnum"
+          }
+        }
+      ],
+      "returns": "string"
+    },
+    {
+      "name": "communities",
+      "accounts": [
+        {
+          "name": "dataAccount",
+          "isMut": false,
+          "isSigner": false,
+          "isOptional": false
+        }
+      ],
+      "args": [
+        {
+          "name": "arg0",
+          "type": "u256"
+        }
+      ],
+      "returns": {
+        "defined": "communities_returns"
+      }
+    },
+    {
+      "name": "createCommunity",
+      "accounts": [
+        {
+          "name": "dataAccount",
+          "isMut": true,
+          "isSigner": false,
+          "isOptional": false
+        }
+      ],
+      "args": [
+        {
+          "name": "communityid",
+          "type": "u256"
+        },
+        {
+          "name": "communityname",
+          "type": "string"
+        },
+        {
+          "name": "parentcommunityid",
+          "type": "u256"
+        },
+        {
+          "name": "tags",
+          "type": {
+            "vec": "string"
+          }
+        },
+        {
+          "name": "chainid",
+          "type": "u256"
+        },
+        {
+          "name": "chainname",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "addressToString",
+      "accounts": [],
+      "args": [
+        {
+          "name": "account",
+          "type": "publicKey"
+        }
+      ],
+      "returns": "string"
+    },
+    {
+      "name": "toString",
+      "accounts": [],
+      "args": [
+        {
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "returns": "string"
+    },
+    {
+      "name": "new",
+      "accounts": [
+        {
+          "name": "dataAccount",
+          "isMut": true,
+          "isSigner": false,
+          "isOptional": false
+        }
+      ],
+      "args": [
+        {
+          "name": "initialAuthority",
+          "type": "publicKey"
+        },
+        {
+          "name": "chainnamesinput",
+          "type": {
+            "vec": "string"
+          }
+        },
+        {
+          "name": "chainids",
+          "type": {
+            "vec": "u256"
+          }
+        }
+      ]
+    },
+    {
+      "name": "set_new_authority",
+      "accounts": [
+        {
+          "name": "dataAccount",
+          "isMut": true,
+          "isSigner": false,
+          "isOptional": false
+        }
+      ],
+      "args": [
+        {
+          "name": "newAuthority",
+          "type": "publicKey"
+        }
+      ]
+    },
+    {
+      "name": "setBridgeImplementation",
+      "accounts": [
+        {
+          "name": "dataAccount",
+          "isMut": true,
+          "isSigner": false,
+          "isOptional": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false,
+          "isOptional": false
+        }
+      ],
+      "args": [
+        {
+          "name": "fromchainid",
+          "type": "u256"
+        },
+        {
+          "name": "tochainid",
+          "type": "u256"
+        },
+        {
+          "name": "bridgeimpladdress",
+          "type": "publicKey"
+        }
+      ]
+    },
+    {
+      "name": "getBridgeImplementation",
+      "accounts": [
+        {
+          "name": "dataAccount",
+          "isMut": false,
+          "isSigner": false,
+          "isOptional": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false,
+          "isOptional": false
+        }
+      ],
+      "args": [
+        {
+          "name": "fromchainid",
+          "type": "u256"
+        },
+        {
+          "name": "tochainid",
+          "type": "u256"
+        }
+      ],
+      "returns": "publicKey"
+    },
+    {
+      "name": "getChainId",
+      "accounts": [],
+      "args": [],
+      "returns": "u256"
+    },
+    {
+      "name": "generateUniqueId",
+      "accounts": [
+        {
+          "name": "dataAccount",
+          "isMut": true,
+          "isSigner": false,
+          "isOptional": false
+        },
+        {
+          "name": "clock",
+          "isMut": false,
+          "isSigner": false,
+          "isOptional": false
+        }
+      ],
+      "args": [],
+      "returns": "u256"
+    },
+    {
+      "name": "getChainName",
+      "accounts": [
+        {
+          "name": "dataAccount",
+          "isMut": false,
+          "isSigner": false,
+          "isOptional": false
+        }
+      ],
+      "args": [
+        {
+          "name": "chainid",
+          "type": "u256"
+        }
+      ],
+      "returns": "string"
+    },
+    {
+      "name": "getVotingStructures",
+      "accounts": [
+        {
+          "name": "dataAccount",
+          "isMut": false,
+          "isSigner": false,
+          "isOptional": false
+        }
+      ],
+      "args": [],
+      "returns": {
+        "defined": "getVotingStructures_returns"
+      }
+    },
+    {
+      "name": "createProposal",
+      "accounts": [
+        {
+          "name": "dataAccount",
+          "isMut": true,
+          "isSigner": false,
+          "isOptional": false
+        },
+        {
+          "name": "clock",
+          "isMut": false,
+          "isSigner": false,
+          "isOptional": false
+        }
+      ],
+      "args": [
+        {
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "name": "communityid",
+          "type": "u256"
+        },
+        {
+          "name": "communityname",
+          "type": "string"
+        },
+        {
+          "name": "proposingmemberaddress",
+          "type": "publicKey"
+        },
+        {
+          "name": "proposingmemberchainid",
+          "type": "u256"
+        },
+        {
+          "name": "communityrestriction",
+          "type": {
+            "defined": "CommunityRestriction"
+          }
+        },
+        {
+          "name": "votingstructure",
+          "type": {
+            "defined": "VotingStructure"
+          }
+        },
+        {
+          "name": "proposalbudget",
+          "type": "u256"
+        },
+        {
+          "name": "quorum",
+          "type": "u256"
+        },
+        {
+          "name": "starttime",
+          "type": "u256"
+        },
+        {
+          "name": "endtime",
+          "type": "u256"
+        },
+        {
+          "name": "proposalimplementationaddress",
+          "type": "publicKey"
+        },
+        {
+          "name": "tags",
+          "type": {
+            "vec": "string"
+          }
+        }
+      ],
+      "returns": "u256"
+    },
+    {
+      "name": "allowCommunity",
+      "accounts": [
+        {
+          "name": "dataAccount",
+          "isMut": true,
+          "isSigner": false,
+          "isOptional": false
+        }
+      ],
+      "args": [
+        {
+          "name": "communitycontract",
+          "type": "publicKey"
+        }
+      ]
+    },
+    {
+      "name": "disallowCommunity",
+      "accounts": [
+        {
+          "name": "dataAccount",
+          "isMut": true,
+          "isSigner": false,
+          "isOptional": false
+        }
+      ],
+      "args": [
+        {
+          "name": "communitycontract",
+          "type": "publicKey"
+        }
+      ]
+    },
+    {
+      "name": "getProposalBasicInfoAndContraintsWithoutVotesById",
+      "accounts": [
+        {
+          "name": "dataAccount",
+          "isMut": false,
+          "isSigner": false,
+          "isOptional": false
+        }
+      ],
+      "args": [
+        {
+          "name": "proposalid",
+          "type": "u256"
+        }
+      ],
+      "returns": {
+        "defined": "ProposalBasicData"
+      }
+    },
+    {
+      "name": "transferVoteCost",
+      "accounts": [
+        {
+          "name": "dataAccount",
+          "isMut": true,
+          "isSigner": false,
+          "isOptional": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false,
+          "isOptional": false
+        },
+        {
+          "name": "clock",
+          "isMut": false,
+          "isSigner": false,
+          "isOptional": false
+        }
+      ],
+      "args": [
+        {
+          "name": "votedata",
+          "type": {
+            "defined": "Vote"
+          }
+        },
+        {
+          "name": "cost",
+          "type": "u256"
+        }
+      ],
+      "returns": "bool"
+    },
+    {
+      "name": "getVotingStructuresById",
+      "accounts": [
+        {
+          "name": "dataAccount",
+          "isMut": true,
+          "isSigner": false,
+          "isOptional": false
+        }
+      ],
+      "args": [],
+      "returns": {
+        "defined": "getVotingStructuresById_returns"
+      }
+    },
+    {
+      "name": "vote",
+      "accounts": [
+        {
+          "name": "dataAccount",
+          "isMut": true,
+          "isSigner": false,
+          "isOptional": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false,
+          "isOptional": false
+        },
+        {
+          "name": "clock",
+          "isMut": false,
+          "isSigner": false,
+          "isOptional": false
+        }
+      ],
+      "args": [
+        {
+          "name": "votedata",
+          "type": {
+            "defined": "Vote"
+          }
+        },
+        {
+          "name": "communityid",
+          "type": "u256"
+        }
+      ]
+    },
+    {
+      "name": "executeProposal",
+      "accounts": [
+        {
+          "name": "dataAccount",
+          "isMut": true,
+          "isSigner": false,
+          "isOptional": false
+        }
+      ],
+      "args": [
+        {
+          "name": "proposalindex",
+          "type": "u256"
+        }
+      ]
+    }
+  ],
+  "types": [
+    {
+      "name": "VoteCostType",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Free"
+          },
+          {
+            "name": "OneTokenPerVote"
+          },
+          {
+            "name": "SameAsVoteAmount"
+          },
+          {
+            "name": "Quadratic"
+          }
+        ]
+      }
+    },
+    {
+      "name": "chainNamesEnum",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Ethereum_main_network"
+          },
+          {
+            "name": "Ethereum_classic_main_network"
+          },
+          {
+            "name": "Hardhat"
+          },
+          {
+            "name": "Ganache"
+          },
+          {
+            "name": "Goerli"
+          },
+          {
+            "name": "Palm_testnet"
+          },
+          {
+            "name": "Aurora_testnet"
+          }
+        ]
+      }
+    },
+    {
+      "name": "VotingStructure",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "votingStructureId",
+            "type": "u256"
+          },
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "voteCostType",
+            "type": {
+              "defined": "VoteCostType"
+            }
+          },
+          {
+            "name": "tokenAddress",
+            "type": "publicKey"
+          },
+          {
+            "name": "lowerLimit",
+            "type": "u256"
+          },
+          {
+            "name": "upperLimit",
+            "type": "u256"
+          },
+          {
+            "name": "onlyYes",
+            "type": "bool"
+          },
+          {
+            "name": "onlyOnce",
+            "type": "bool"
+          }
+        ]
+      }
+    },
+    {
+      "name": "CommunityRestriction",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "OnlyProposingCommunity"
+          },
+          {
+            "name": "OnlyProposingAndChildren"
+          },
+          {
+            "name": "OnlyChildren"
+          },
+          {
+            "name": "NotProposingCommunity"
+          },
+          {
+            "name": "All"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ProposalBasicData",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "proposalId",
+            "type": "u256"
+          },
+          {
+            "name": "description",
+            "type": "string"
+          },
+          {
+            "name": "proposingMemberAddress",
+            "type": "publicKey"
+          },
+          {
+            "name": "proposingMemberChainId",
+            "type": "u256"
+          },
+          {
+            "name": "proposingCommunityId",
+            "type": "u256"
+          },
+          {
+            "name": "proposingCommunityName",
+            "type": "string"
+          },
+          {
+            "name": "proposalCommunityRestriction",
+            "type": "u256"
+          },
+          {
+            "name": "startTime",
+            "type": "u256"
+          },
+          {
+            "name": "endTime",
+            "type": "u256"
+          },
+          {
+            "name": "votingStructureId",
+            "type": "u256"
+          },
+          {
+            "name": "tags",
+            "type": {
+              "vec": "string"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "Vote",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "voteId",
+            "type": "u256"
+          },
+          {
+            "name": "votingStructureId",
+            "type": "u256"
+          },
+          {
+            "name": "proposalId",
+            "type": "u256"
+          },
+          {
+            "name": "yesno",
+            "type": "bool"
+          },
+          {
+            "name": "numericValue",
+            "type": "u256"
+          },
+          {
+            "name": "voterAddress",
+            "type": "publicKey"
+          },
+          {
+            "name": "voterChainId",
+            "type": "u256"
+          },
+          {
+            "name": "chainCurrentVotingWeight",
+            "type": "u256"
+          },
+          {
+            "name": "chainCurrentProposalVotingWeight",
+            "type": "u256"
+          },
+          {
+            "name": "memberCurrentVotingWeight",
+            "type": "u256"
+          },
+          {
+            "name": "memberCurrentProposalVotingWeight",
+            "type": "u256"
+          }
+        ]
+      }
+    },
+    {
+      "name": "votingTypeVotingStructure_returns",
+      "docs": [
+        "Data structure to hold the multiple returns of function votingTypeVotingStructure"
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "votingStructureId",
+            "type": "u256"
+          },
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "voteCostType",
+            "type": {
+              "defined": "VoteCostType"
+            }
+          },
+          {
+            "name": "tokenAddress",
+            "type": "publicKey"
+          },
+          {
+            "name": "lowerLimit",
+            "type": "u256"
+          },
+          {
+            "name": "upperLimit",
+            "type": "u256"
+          },
+          {
+            "name": "onlyYes",
+            "type": "bool"
+          },
+          {
+            "name": "onlyOnce",
+            "type": "bool"
+          }
+        ]
+      }
+    },
+    {
+      "name": "votingStructureIdVotingStructure_returns",
+      "docs": [
+        "Data structure to hold the multiple returns of function votingStructureIdVotingStructure"
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "votingStructureId",
+            "type": "u256"
+          },
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "voteCostType",
+            "type": {
+              "defined": "VoteCostType"
+            }
+          },
+          {
+            "name": "tokenAddress",
+            "type": "publicKey"
+          },
+          {
+            "name": "lowerLimit",
+            "type": "u256"
+          },
+          {
+            "name": "upperLimit",
+            "type": "u256"
+          },
+          {
+            "name": "onlyYes",
+            "type": "bool"
+          },
+          {
+            "name": "onlyOnce",
+            "type": "bool"
+          }
+        ]
+      }
+    },
+    {
+      "name": "communities_returns",
+      "docs": [
+        "Data structure to hold the multiple returns of function communities"
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "id",
+            "type": "u256"
+          },
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "parentCommunityId",
+            "type": "u256"
+          },
+          {
+            "name": "memberChainIds",
+            "type": {
+              "vec": "u256"
+            }
+          },
+          {
+            "name": "tags",
+            "type": {
+              "vec": "string"
+            }
+          },
+          {
+            "name": "chainId",
+            "type": "u256"
+          },
+          {
+            "name": "chainName",
+            "type": "string"
+          },
+          {
+            "name": "operation",
+            "type": "string"
+          },
+          {
+            "name": "operationAccount",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "getVotingStructures_returns",
+      "docs": [
+        "Data structure to hold the multiple returns of function getVotingStructures"
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "return_0",
+            "type": {
+              "vec": "u256"
+            }
+          },
+          {
+            "name": "return_1",
+            "type": {
+              "vec": {
+                "defined": "VotingStructure"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "getVotingStructuresById_returns",
+      "docs": [
+        "Data structure to hold the multiple returns of function getVotingStructuresById"
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "return_0",
+            "type": {
+              "vec": "u256"
+            }
+          },
+          {
+            "name": "return_1",
+            "type": {
+              "vec": {
+                "defined": "VotingStructure"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "events": [
+    {
+      "name": "ProposalCreated",
+      "fields": [
+        {
+          "name": "proposalId",
+          "type": "u256",
+          "index": true
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "index": false
+        },
+        {
+          "name": "proposingMemberAddress",
+          "type": "publicKey",
+          "index": true
+        },
+        {
+          "name": "proposingMemberChainId",
+          "type": "u256",
+          "index": false
+        },
+        {
+          "name": "proposingCommunityId",
+          "type": "u256",
+          "index": false
+        },
+        {
+          "name": "proposingCommunityName",
+          "type": "string",
+          "index": false
+        },
+        {
+          "name": "proposalBudget",
+          "type": "u256",
+          "index": false
+        },
+        {
+          "name": "numberOfVotes",
+          "type": "u256",
+          "index": false
+        },
+        {
+          "name": "executed",
+          "type": "bool",
+          "index": false
+        },
+        {
+          "name": "passed",
+          "type": "bool",
+          "index": false
+        },
+        {
+          "name": "quorum",
+          "type": "u256",
+          "index": false
+        },
+        {
+          "name": "startTime",
+          "type": "u256",
+          "index": false
+        },
+        {
+          "name": "endTime",
+          "type": "u256",
+          "index": false
+        },
+        {
+          "name": "votingType",
+          "type": "u256",
+          "index": false
+        },
+        {
+          "name": "proposalImplementationAddress",
+          "type": "publicKey",
+          "index": false
+        },
+        {
+          "name": "tags",
+          "type": {
+            "vec": "string"
+          },
+          "index": false
+        }
+      ]
+    }
+  ]
+}
